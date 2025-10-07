@@ -1,0 +1,27 @@
+{
+  "name": "cryptobeam-investor-portal",
+  "version": "1.0.0",
+  "description": "Secure Investor Portal for Cryptobeam Fund - Auth0-powered accredited investor portal supporting Reg D 506(b) onboarding, NDA signing, and secure fund document access",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx http-server -p 8080",
+    "test": "echo \"No tests configured yet\" && exit 0"
+  },
+  "keywords": [
+    "investor-portal",
+    "reg-d",
+    "fund",
+    "cryptobeam",
+    "auth0",
+    "webflow"
+  ],
+  "author": "REDDNoC",
+  "license": "MIT",
+  "dependencies": {
+    "auth0-js": "^9.23.2",
+    "firebase": "^10.7.1"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}
