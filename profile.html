@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - Cryptobeam Fund</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <h1>Cryptobeam Fund</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="documents.html">Documents</a></li>
+                    <li><a href="profile.html">Profile</a></li>
+                    <li><a href="#" id="logoutBtn">Logout</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <h2>Investor Profile</h2>
+            
+            <div class="documents-section">
+                <h3>Personal Information</h3>
+                <div class="status-item">
+                    <span class="status-label">Name:</span>
+                    <span id="profileName">Loading...</span>
+                </div>
+                <div class="status-item">
+                    <span class="status-label">Email:</span>
+                    <span id="profileEmail">Loading...</span>
+                </div>
+                <div class="status-item">
+                    <span class="status-label">Account Created:</span>
+                    <span id="profileCreated">-</span>
+                </div>
+            </div>
+
+            <div class="documents-section">
+                <h3>Accreditation Status</h3>
+                <div class="status-item">
+                    <span class="status-label">Accredited Investor:</span>
+                    <span id="profileAccredited">Not Verified</span>
+                </div>
+                <div class="status-item">
+                    <span class="status-label">Verification Method:</span>
+                    <span id="profileMethod">-</span>
+                </div>
+                <div class="status-item">
+                    <span class="status-label">Verification Date:</span>
+                    <span id="profileVerifiedDate">-</span>
+                </div>
+            </div>
+
+            <div class="documents-section">
+                <h3>Investment Information</h3>
+                <div class="status-item">
+                    <span class="status-label">Total Capital Committed:</span>
+                    <span id="profileCapital">$0</span>
+                </div>
+                <div class="status-item">
+                    <span class="status-label">Partnership Interest:</span>
+                    <span id="profileInterest">0%</span>
+                </div>
+                <div class="status-item">
+                    <span class="status-label">Investment Date:</span>
+                    <span id="profileInvestmentDate">-</span>
+                </div>
+            </div>
+
+            <div class="documents-section">
+                <h3>Security</h3>
+                <div class="action-buttons">
+                    <button class="btn btn-secondary" onclick="alert('Multi-factor authentication settings would be configured here via Auth0.')">Configure MFA</button>
+                    <button class="btn btn-secondary" onclick="alert('Password change would be handled through Auth0.')">Change Password</button>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 Cryptobeam Fund. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script src="https://cdn.auth0.com/js/auth0/9.23/auth0.min.js"></script>
+    <script type="module">
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
+        import { getFirestore } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
+        
+        window.firebaseModule = { initializeApp, getFirestore };
+    </script>
+    <script src="config/auth0-config.js"></script>
+    <script src="config/firebase-config.js"></script>
+    <script src="js/auth.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Require authentication
+            if (!authService.requireAuth()) {
+                return;
+            }
+
+            // Logout button
+            const logoutBtn = document.getElementById('logoutBtn');
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    authService.logout();
+                });
+            }
+
+            // Load profile data
+            loadProfileData();
+        });
+
+        function loadProfileData() {
+            const profile = authService.getProfile();
+            const investorData = JSON.parse(localStorage.getItem('investor_status') || '{}');
+
+            if (profile) {
+                document.getElementById('profileName').textContent = profile.name || 'N/A';
+                document.getElementById('profileEmail').textContent = profile.email || 'N/A';
+            }
+
+            // Accreditation status
+            const accredited = document.getElementById('profileAccredited');
+            if (investorData.accredited) {
+                accredited.textContent = 'Verified ✓';
+                accredited.className = 'status-complete';
+                document.getElementById('profileMethod').textContent = 'Plaid Financial Verification';
+                document.getElementById('profileVerifiedDate').textContent = new Date().toLocaleDateString();
+            } else {
+                accredited.textContent = 'Not Verified';
+                accredited.className = 'status-pending';
+            }
+
+            // Mock investment data
+            if (investorData.lpaSigned) {
+                document.getElementById('profileCapital').textContent = '$250,000';
+                document.getElementById('profileInterest').textContent = '0.5%';
+                document.getElementById('profileInvestmentDate').textContent = new Date().toLocaleDateString();
+            }
+        }
+    </script>
+</body>
+</html>

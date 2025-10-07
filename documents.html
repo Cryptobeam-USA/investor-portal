@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documents - Cryptobeam Fund</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <h1>Cryptobeam Fund</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="documents.html">Documents</a></li>
+                    <li><a href="profile.html">Profile</a></li>
+                    <li><a href="#" id="logoutBtn">Logout</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <h2>Fund Documents</h2>
+            
+            <div class="documents-section">
+                <h3>Form D Filings</h3>
+                <div class="document-list" id="formDDocuments">
+                    <div class="document-item">
+                        <span class="document-icon">📄</span>
+                        <div class="document-info">
+                            <h4>Form D - Initial Filing</h4>
+                            <p>SEC Regulation D 506(b) Offering Filing</p>
+                            <small>Filed: January 2025</small>
+                        </div>
+                        <button class="btn btn-sm" onclick="viewDocument('form-d-initial')">View</button>
+                    </div>
+                    <div class="document-item">
+                        <span class="document-icon">📄</span>
+                        <div class="document-info">
+                            <h4>Form D - Amendment</h4>
+                            <p>Updated offering information</p>
+                            <small>Filed: January 2025</small>
+                        </div>
+                        <button class="btn btn-sm" onclick="viewDocument('form-d-amendment')">View</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="documents-section">
+                <h3>Partnership Agreements</h3>
+                <div class="document-list" id="lpaDocuments">
+                    <div class="document-item">
+                        <span class="document-icon">📋</span>
+                        <div class="document-info">
+                            <h4>Limited Partnership Agreement</h4>
+                            <p>Cryptobeam Fund LP Agreement</p>
+                            <small>Version 1.0</small>
+                        </div>
+                        <button class="btn btn-sm" onclick="viewDocument('lpa-main')">View</button>
+                    </div>
+                    <div class="document-item">
+                        <span class="document-icon">📋</span>
+                        <div class="document-info">
+                            <h4>Subscription Agreement</h4>
+                            <p>Investor subscription documents</p>
+                            <small>Version 1.0</small>
+                        </div>
+                        <button class="btn btn-sm" onclick="viewDocument('subscription-agreement')">View</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="documents-section">
+                <h3>Confidentiality & Compliance</h3>
+                <div class="document-list" id="complianceDocuments">
+                    <div class="document-item">
+                        <span class="document-icon">🔒</span>
+                        <div class="document-info">
+                            <h4>Non-Disclosure Agreement</h4>
+                            <p>Confidentiality agreement for investors</p>
+                            <small>Your status: <span id="ndaDocStatus">Not Signed</span></small>
+                        </div>
+                        <button class="btn btn-sm" onclick="signDocument('nda')">Sign</button>
+                    </div>
+                    <div class="document-item">
+                        <span class="document-icon">✓</span>
+                        <div class="document-info">
+                            <h4>Accredited Investor Certification</h4>
+                            <p>SEC Rule 501 Accreditation Verification</p>
+                            <small>Status: <span id="accreditationDocStatus">Pending</span></small>
+                        </div>
+                        <button class="btn btn-sm" onclick="viewDocument('accreditation')">View</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="documents-section">
+                <h3>Fund Information</h3>
+                <div class="document-list" id="fundDocuments">
+                    <div class="document-item">
+                        <span class="document-icon">📊</span>
+                        <div class="document-info">
+                            <h4>Private Placement Memorandum</h4>
+                            <p>Comprehensive fund overview and risk disclosures</p>
+                            <small>Updated: January 2025</small>
+                        </div>
+                        <button class="btn btn-sm" onclick="viewDocument('ppm')">View</button>
+                    </div>
+                    <div class="document-item">
+                        <span class="document-icon">📈</span>
+                        <div class="document-info">
+                            <h4>Investment Strategy Document</h4>
+                            <p>Detailed investment thesis and approach</p>
+                            <small>Version 1.0</small>
+                        </div>
+                        <button class="btn btn-sm" onclick="viewDocument('strategy')">View</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 Cryptobeam Fund. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script src="https://cdn.auth0.com/js/auth0/9.23/auth0.min.js"></script>
+    <script type="module">
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
+        import { getFirestore } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
+        
+        window.firebaseModule = { initializeApp, getFirestore };
+    </script>
+    <script src="config/auth0-config.js"></script>
+    <script src="config/firebase-config.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/documents.js"></script>
+</body>
+</html>

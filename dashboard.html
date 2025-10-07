@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investor Dashboard - Cryptobeam Fund</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <h1>Cryptobeam Fund</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="documents.html">Documents</a></li>
+                    <li><a href="profile.html">Profile</a></li>
+                    <li><a href="#" id="logoutBtn">Logout</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <div class="dashboard-header">
+                <h2>Investor Dashboard</h2>
+                <p>Welcome, <span id="investorName">Investor</span></p>
+            </div>
+
+            <div class="dashboard-content">
+                <div class="status-card">
+                    <h3>Onboarding Status</h3>
+                    <div id="onboardingStatus">
+                        <div class="status-item">
+                            <span class="status-label">Accreditation Verification:</span>
+                            <span class="status-value" id="accreditationStatus">Pending</span>
+                        </div>
+                        <div class="status-item">
+                            <span class="status-label">NDA Signed:</span>
+                            <span class="status-value" id="ndaStatus">Pending</span>
+                        </div>
+                        <div class="status-item">
+                            <span class="status-label">Partnership Agreement:</span>
+                            <span class="status-value" id="lpaStatus">Pending</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="actions-card">
+                    <h3>Available Actions</h3>
+                    <div class="action-buttons">
+                        <button id="verifyAccreditationBtn" class="btn btn-primary">Verify Accreditation</button>
+                        <button id="signNDABtn" class="btn btn-primary">Sign NDA</button>
+                        <button id="signLPABtn" class="btn btn-primary">Sign Partnership Agreement</button>
+                        <button id="viewDocumentsBtn" class="btn btn-secondary">View Documents</button>
+                    </div>
+                </div>
+
+                <div class="documents-card">
+                    <h3>Recent Documents</h3>
+                    <div id="recentDocuments">
+                        <p>No documents available yet. Complete onboarding to access fund documents.</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 Cryptobeam Fund. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script src="https://cdn.auth0.com/js/auth0/9.23/auth0.min.js"></script>
+    <script type="module">
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
+        import { getFirestore } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
+        
+        window.firebaseModule = { initializeApp, getFirestore };
+    </script>
+    <script src="config/auth0-config.js"></script>
+    <script src="config/firebase-config.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cryptobeam Fund - Investor Portal</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <h1>Cryptobeam Fund</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="#" id="loginBtn">Login</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main class="hero">
+            <div class="hero-content">
+                <h2>Secure Investor Portal</h2>
+                <p>Access your accredited investor account for the Cryptobeam Fund. Our portal provides secure document access, e-signature capabilities, and compliance with Reg D 506(b) requirements.</p>
+                <div class="cta-buttons">
+                    <button id="loginButton" class="btn btn-primary">Investor Login</button>
+                    <button id="registerButton" class="btn btn-secondary">New Investor Registration</button>
+                </div>
+            </div>
+        </main>
+
+        <section class="features">
+            <h3>Portal Features</h3>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4>🔒 Secure Authentication</h4>
+                    <p>Auth0-powered secure login with multi-factor authentication</p>
+                </div>
+                <div class="feature-card">
+                    <h4>📝 Digital Signatures</h4>
+                    <p>DocuSign integration for NDA and partnership agreement signing</p>
+                </div>
+                <div class="feature-card">
+                    <h4>✓ Accreditation Verification</h4>
+                    <p>Plaid-powered verification of accredited investor status</p>
+                </div>
+                <div class="feature-card">
+                    <h4>📄 Document Access</h4>
+                    <p>Secure access to Form D filings and partnership agreements</p>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2025 Cryptobeam Fund. All rights reserved.</p>
+            <p>This offering is made pursuant to Regulation D, Rule 506(b) and is available only to accredited investors.</p>
+        </footer>
+    </div>
+
+    <script src="https://cdn.auth0.com/js/auth0/9.23/auth0.min.js"></script>
+    <script src="config/auth0-config.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Cryptobeam Fund</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <h1>Cryptobeam Fund</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="#" id="loginBtn">Login</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <section style="padding: 3rem 0;">
+                <h2>About Cryptobeam Fund</h2>
+                
+                <div style="background: var(--surface); padding: 2rem; border-radius: 0.5rem; margin: 2rem 0;">
+                    <h3>Investment Strategy</h3>
+                    <p>Cryptobeam Fund LP is a Delaware limited partnership that invests in digital assets, blockchain technologies, and cryptocurrency-related securities. Our fund operates under SEC Regulation D, Rule 506(b), limiting investments to accredited investors only.</p>
+                </div>
+
+                <div style="background: var(--surface); padding: 2rem; border-radius: 0.5rem; margin: 2rem 0;">
+                    <h3>Regulatory Compliance</h3>
+                    <p>Our fund adheres to all applicable securities laws and regulations:</p>
+                    <ul style="margin-left: 2rem; margin-top: 1rem;">
+                        <li><strong>Regulation D 506(b):</strong> Private placement exemption for accredited investors</li>
+                        <li><strong>Form D Filing:</strong> Filed with the SEC and applicable state securities regulators</li>
+                        <li><strong>Anti-Money Laundering:</strong> Comprehensive KYC/AML procedures</li>
+                        <li><strong>Investor Accreditation:</strong> Verification through Plaid and documentation review</li>
+                    </ul>
+                </div>
+
+                <div style="background: var(--surface); padding: 2rem; border-radius: 0.5rem; margin: 2rem 0;">
+                    <h3>Technology Stack</h3>
+                    <p>Our investor portal is built with security and compliance as top priorities:</p>
+                    <ul style="margin-left: 2rem; margin-top: 1rem;">
+                        <li><strong>Auth0:</strong> Enterprise-grade authentication and authorization</li>
+                        <li><strong>Firebase:</strong> Secure cloud data storage and real-time updates</li>
+                        <li><strong>DocuSign:</strong> Legally binding electronic signatures</li>
+                        <li><strong>Plaid:</strong> Financial data verification for accreditation</li>
+                        <li><strong>Webflow:</strong> Professional web design and hosting</li>
+                    </ul>
+                </div>
+
+                <div style="background: var(--surface); padding: 2rem; border-radius: 0.5rem; margin: 2rem 0;">
+                    <h3>Investor Requirements</h3>
+                    <p>To invest in Cryptobeam Fund, you must:</p>
+                    <ul style="margin-left: 2rem; margin-top: 1rem;">
+                        <li>Be an accredited investor as defined by SEC Rule 501</li>
+                        <li>Meet minimum investment threshold of $250,000</li>
+                        <li>Complete investor onboarding and verification</li>
+                        <li>Sign required legal documentation (NDA, LPA, Subscription Agreement)</li>
+                    </ul>
+                </div>
+
+                <div style="background: var(--primary-color); color: white; padding: 2rem; border-radius: 0.5rem; margin: 2rem 0; text-align: center;">
+                    <h3>Ready to Invest?</h3>
+                    <p>Join our fund and gain access to institutional-grade digital asset investment opportunities.</p>
+                    <button id="getStartedBtn" class="btn" style="background: white; color: var(--primary-color); margin-top: 1rem;">Get Started</button>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 Cryptobeam Fund. All rights reserved.</p>
+            <p>This offering is made pursuant to Regulation D, Rule 506(b) and is available only to accredited investors.</p>
+        </footer>
+    </div>
+
+    <script src="https://cdn.auth0.com/js/auth0/9.23/auth0.min.js"></script>
+    <script src="config/auth0-config.js"></script>
+    <script src="js/auth.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const loginBtn = document.getElementById('loginBtn');
+            const getStartedBtn = document.getElementById('getStartedBtn');
+            
+            if (loginBtn) {
+                loginBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    authService.login();
+                });
+            }
+            
+            if (getStartedBtn) {
+                getStartedBtn.addEventListener('click', function() {
+                    authService.login();
+                });
+            }
+        });
+    </script>
+</body>
+</html>
